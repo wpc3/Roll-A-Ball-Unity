@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public float speed = 0;
+
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -21,7 +23,7 @@ void OnMove(InputValue movementValue){
 void FixedUpdate(){
     Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
-    rb.AddForce(movement);
+    rb.AddForce(movement * speed);
 }
     
 }
