@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
 
     public TextMeshProUGUI countText;
+    public GameObject winTextObject;
 
     //Rigid body of the playeer
     private Rigidbody rb;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
 
         SetCountText();
+        winTextObject.SetActive(false);
 
     }
 //Function is called when a move input is detected
@@ -41,6 +43,10 @@ void OnMove(InputValue movementValue){
 
 void SetCountText(){
     countText.text = "Count: " + count.ToString();
+
+    if(count >= 12){
+        winTextObject.SetActive(true);
+    }
 }
 //Fixed Update is called once per fixed frame-rate frame
 void FixedUpdate(){
