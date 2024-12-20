@@ -36,7 +36,11 @@ void FixedUpdate(){
 }
 
 void OnTriggerEnter(Collider other){
+    
+    //Check if the object the player collided with is the "PickUp"
     if(other.gameObject.CompareTag("PickUp")){
+    
+    //Deactivate the collided object
     other.gameObject.SetActive(false);
     }
     
