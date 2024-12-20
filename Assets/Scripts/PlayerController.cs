@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     //Rigid body of the playeer
     private Rigidbody rb;
+
+    private int count;
+
     //Movement along x and y axis
     private float movementX;
     private float movementY;
@@ -16,6 +19,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {   //Get and store the Rigidbody component attached to the player
         rb = GetComponent<Rigidbody>();
+
+        count = 0;
+
     }
 //Function is called when a move input is detected
 void OnMove(InputValue movementValue){
@@ -36,12 +42,14 @@ void FixedUpdate(){
 }
 
 void OnTriggerEnter(Collider other){
-    
+
     //Check if the object the player collided with is the "PickUp"
     if(other.gameObject.CompareTag("PickUp")){
     
     //Deactivate the collided object
     other.gameObject.SetActive(false);
+
+    count = count + 1;
     }
     
 }
