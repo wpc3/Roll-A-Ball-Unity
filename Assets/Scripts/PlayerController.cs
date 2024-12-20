@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     //Speed of the player
     public float speed = 0;
+
+    public TextMeshProUGUI countText;
+
     //Rigid body of the playeer
     private Rigidbody rb;
 
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
         count = 0;
 
+        SetCountText();
+
     }
 //Function is called when a move input is detected
 void OnMove(InputValue movementValue){
@@ -31,6 +37,10 @@ void OnMove(InputValue movementValue){
     //Store the x and y components of the movement
     movementX = movementVector.x;
     movementY = movementVector.y;
+}
+
+void SetCountText(){
+    countText.text = "Count: " + count.ToString();
 }
 //Fixed Update is called once per fixed frame-rate frame
 void FixedUpdate(){
@@ -50,6 +60,8 @@ void OnTriggerEnter(Collider other){
     other.gameObject.SetActive(false);
 
     count = count + 1;
+
+    SetCountText();
     }
     
 }
