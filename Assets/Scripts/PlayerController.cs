@@ -8,12 +8,16 @@ public class PlayerController : MonoBehaviour
     //Speed of the player
     public float speed = 0;
 
+    // UI text component to display count of "PickUp" objects collected.
     public TextMeshProUGUI countText;
+    
+    // UI object to display winning text.
     public GameObject winTextObject;
 
     //Rigid body of the playeer
     private Rigidbody rb;
 
+    // Variable to keep track of collected "PickUp" objects.
     private int count;
 
     //Movement along x and y axis
@@ -25,9 +29,13 @@ public class PlayerController : MonoBehaviour
     {   //Get and store the Rigidbody component attached to the player
         rb = GetComponent<Rigidbody>();
 
+        //Initialize count to zero
         count = 0;
 
+        //Update the count display
         SetCountText();
+
+        //Initially set the win text to be inactive
         winTextObject.SetActive(false);
 
     }
@@ -42,9 +50,13 @@ void OnMove(InputValue movementValue){
 }
 
 void SetCountText(){
+    //Update the count text wiwth the current count
     countText.text = "Count: " + count.ToString();
 
+    //Check if the count has reached or exceeded the win condition
     if(count >= 12){
+
+        //Check if the count has reached or exceeded th win condition
         winTextObject.SetActive(true);
     }
 }
@@ -65,8 +77,10 @@ void OnTriggerEnter(Collider other){
     //Deactivate the collided object
     other.gameObject.SetActive(false);
 
+    //Increment the count of the pickup objects
     count = count + 1;
 
+    //Update display count
     SetCountText();
     }
     
