@@ -102,7 +102,7 @@ private void OnCollisionEnter(Collision collision)
  
  // Update the winText to display "You Lose!"
         winTextObject.gameObject.SetActive(true);
-        winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+        winTextObject.GetComponent<TextMeshProUGUI>().text = "Sorry bud, you took an L :(!";
  
     }
 
